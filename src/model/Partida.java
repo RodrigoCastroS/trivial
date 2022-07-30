@@ -10,10 +10,16 @@ public class Partida {
     private int preguntasAcertadas;
     private ArrayList<Pregunta> preguntas;
 
+
     private void initPlayer(String playerName) {
         this.playerName = playerName;
         this.score = 0;
         this.preguntasAcertadas = 0;
+    }
+
+    public Partida() {
+        initPreguntas();
+        initPlayer("Juan");
     }
 
     private void initPreguntas() {
@@ -33,10 +39,7 @@ public class Partida {
         this.preguntas.add(fifthPregunta);
     }
 
-    public Partida() {
-        initPreguntas();
-        initPlayer("Juan");
-    }
+
     public void jugarPartida() {
 
         preguntas.forEach(pregunta -> {
