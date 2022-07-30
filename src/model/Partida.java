@@ -39,18 +39,19 @@ public class Partida {
     }
     public void jugarPartida() {
 
-        for (int i = 0; i < preguntas.size(); i++) {
-            Pregunta preguntaActual = preguntas.get(i);
-            mostrarPregunta(preguntaActual);
+        preguntas.forEach(pregunta -> {
+            mostrarPregunta(pregunta);
             boolean respuesta = preguntaUsuario();
-            if (respuesta == preguntaActual.isTrue()) {
-                this.score = this.score + preguntaActual.getDificultad();
+            if (respuesta == pregunta.isTrue()) {
+                this.score = this.score + pregunta.getDificultad();
                 preguntasAcertadas++;
                 System.out.println("Has acertado, tu puntuacion se ha incrementado a: " + this.score);
             } else {
                 System.out.println("Buen intento, has fallado");
             }
-        }
+
+        });
+
         mostrarEstadisticas();
     }
 
@@ -63,7 +64,7 @@ public class Partida {
         Scanner scanner = new Scanner(System.in);
         System.out.println("true o false?");
         boolean result = scanner.nextBoolean();
-        scanner.close();
+//        scanner.close();
         return result;
     }
 
